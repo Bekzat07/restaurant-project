@@ -1,0 +1,18 @@
+.geoImage {
+  width: 856px;
+  height: 656px;
+}
+.geo {
+  width: 1296px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.information {
+  display: flex;
+  border: 1px solid red;
+  width: 420px;
+  height: 656px;
+  border-radius: 2px;
+  background-color: #954513;
+}

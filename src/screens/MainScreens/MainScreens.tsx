@@ -1,34 +1,45 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import "./style.css";
-import MainIcon from "../../assets/Icon/MainIcon";
-import { collection, onSnapshot } from "firebase/firestore";
+
+//firebase
+import { collection, doc, onSnapshot, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase";
+
+//components
+import Contacts from "../../components/Contacts/Contacts";
+import Header from "../../components/Header/Header";
+import Text from "../../components/Text/Text";
+import PriceButton from "../../components/PriceButton/PriceButton";
+import Collapsib from "../../components/Collapsible/Collapsible";
+
+interface dataForm {
+  id: number;
+  purchase: boolean;
+  img: string;
+  foodImage: string;
+  price: number;
+  weight: number;
+  content: string;
+}
 const MainScreens = () => {
-  const [data, setData] = useState<any[]>([]);
+  const [data, setData] = useState<dataForm[]>([]);
   const [event, setEvent] = useState(true);
 
   useEffect(() => {
     onSnapshot(collection(db, "restaurant"), (snapshot) => {
-      setData(snapshot.docs.map((e) => e.data()));
+      setData(snapshot.docs.map((e: any) => e.data()));
     });
   }, []);
 
+  const updateData = async (e: dataForm) => {
+    console.log("id", `${e.id}`);
+    const ref = doc(db, "restaurant", `${e.id}`);
+    console.log(ref);
+    await updateDoc(ref, { purchase: !e.purchase });
+  };
   return (
     <div className="MainScreenContainer">
-      <div className="mainHeader">
-        <MainIcon />
-        <div className="link">
-          <p className="screens">Главная</p>
-          <p className="screens">Меню</p>
-          <p className="screens">Афиша</p>
-          <p className="screens">Сотрудничество</p>
-          <p className="screens">Галерея</p>
-          <p className="screens">Новости</p>
-        </div>
-        <button className="button">{`бронирование`.toUpperCase()}</button>
-      </div>
-
+      <Header />
       <div className="conatinerEvent">
         <img
           src={require("../../assets/image/image.png")}
@@ -54,18 +65,42 @@ const MainScreens = () => {
           </div>
         </div>
       </div>
-      {/* <Link to="/menu">bvredws</Link> */}
-      <h1 className="screens">Aфиша</h1>
-      <div className="imageContainer">
+      <Text
+        color="white"
+        styles={"kitchenText"}
+        title={"Кухня".toUpperCase()}
+      />
+      <div className="kitchenContainer">
         {data.map((e) => {
-          return <img src={e.img} className="img" />;
+          return (
+            <div className="containerFood">
+              <img src={e.foodImage} className="foodImaage" />
+              <div
+                style={{
+                  height: 111,
+                }}
+              >
+                <div className="priceContainer">
+                  <Text title="Amet donec." color="white" styles={"foodText"} />
+                  <PriceButton
+                    title={!e.purchase ? `${e.price}₽` : "отменить заказ"}
+                    onPress={() => updateData(e)}
+                  />
+                </div>
+                <Text
+                  title={`${e.weight}гр`}
+                  color="#D5621D"
+                  styles={"content"}
+                />
+                <Text title={e.content} color="white" styles={"content"} />
+              </div>
+            </div>
+          );
         })}
       </div>
-      <h1 className="screens">{"контакты".toUpperCase()}</h1>
-      <div className="geo">
-        <div className="information"></div>
-        <img src={require("../../assets/image/geo.png")} className="geoImage" />
-      </div>
+      <Collapsib title="grfedgberfdws" trigger="Loudspeakers" />
+      <Collapsib title="grfedgfregfr4eberfdws" trigger="Loudspfrefeakers" />
+      <Contacts />
     </div>
   );
 };

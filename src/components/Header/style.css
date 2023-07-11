@@ -1,0 +1,29 @@
+.mainHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 20px;
+  align-items: center;
+  width: 1305px;
+  min-height: 51px;
+}
+.link {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  width: 559px;
+  height: 21px;
+}
+.paletteWhite {
+  color: white;
+}
+
+.button {
+  width: 188px;
+  border-radius: 5px;
+  height: 51px;
+  border: 2px solid red;
+  font-weight: 400;
+  background-color: #d5621d;
+  color: white;
+}
