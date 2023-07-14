@@ -1,17 +1,38 @@
 import React, { FC } from "react";
-import Collapsible from "react-collapsible";
-interface CollapsibleProps {
-  trigger: string;
-  title: string;
+
+import {
+  AccordionItem,
+  AccordionItemHeading,
+  AccordionItemButton,
+  AccordionItemPanel,
+} from "react-accessible-accordion";
+
+import { CollapsibleProps } from "react-collapsible";
+import "./style.css";
+import ArrowTop from "../../assets/Icon/ArrowTop";
+interface collabsibeProps {
+  itemButton: string;
 }
-const Collapsib: FC<CollapsibleProps> = ({ trigger, title }) => {
+
+const Accordions: FC<collabsibeProps> = ({ itemButton }) => {
   return (
-    <>
-      <Collapsible trigger={trigger}>
-        <p>{title}</p>
-      </Collapsible>
-    </>
+    <AccordionItem>
+      <div className="containerArrow">
+        <AccordionItemHeading className="AccordionItemHeading">
+          <AccordionItemButton className="accorddionButton">
+            {itemButton}
+          </AccordionItemButton>
+        </AccordionItemHeading>
+        <ArrowTop />
+      </div>
+      <AccordionItemPanel className="AccordionItemPanel">
+        <p>
+          Exercitation in fugiat est ut ad ea cupidatat ut in cupidatat occaecat
+          ut occaecat consequat est minim minim esse tempor laborum consequat
+          esse adipisicing eu reprehenderit enim.
+        </p>
+      </AccordionItemPanel>
+    </AccordionItem>
   );
 };
-
-export default Collapsib;
+export default Accordions;

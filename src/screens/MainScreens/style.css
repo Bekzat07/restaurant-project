@@ -1,10 +1,11 @@
 .MainScreenContainer {
   display: flex;
-  flex: 1;
   flex-direction: column;
-  background-color: #451d04;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: #451d04;
 }
 
 .event {
@@ -55,7 +56,6 @@
   justify-content: space-between;
   width: 1076px;
   height: 612px;
-  /* background-color: red; */
 }
 .containerFood {
   display: flex;
@@ -84,7 +84,22 @@
   font-size: 13.5px;
   font-weight: 400;
   width: 351px;
-
-  /* line-height: 21px; */
-  /* text-align: center; */
+}
+.borderMainScreens {
+  width: 1296px;
+  margin-top: 50px;
+  border-bottom: 1px solid white;
+}
+.company {
+  display: flex;
+  flex-direction: row;
+  width: 1296px;
+  justify-content: space-between;
+}
+.accordionContainer {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  justify-content: center;
+  gap: 10px;
 }

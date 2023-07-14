@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
+import { Accordion } from "react-accessible-accordion";
 
 //firebase
 import { collection, doc, onSnapshot, updateDoc } from "firebase/firestore";
@@ -10,7 +11,7 @@ import Contacts from "../../components/Contacts/Contacts";
 import Header from "../../components/Header/Header";
 import Text from "../../components/Text/Text";
 import PriceButton from "../../components/PriceButton/PriceButton";
-import Collapsib from "../../components/Collapsible/Collapsible";
+import Accordions from "../../components/Collapsible/Collapsible";
 
 interface dataForm {
   id: number;
@@ -98,9 +99,20 @@ const MainScreens = () => {
           );
         })}
       </div>
-      <Collapsib title="grfedgberfdws" trigger="Loudspeakers" />
-      <Collapsib title="grfedgfregfr4eberfdws" trigger="Loudspfrefeakers" />
+      <div>
+        <Accordion allowZeroExpanded={true} className="accordionContainer">
+          <Accordions itemButton="Loudspeakers" />
+          <Accordions itemButton="Loudspeakers" />
+          <Accordions itemButton="fferf" />
+        </Accordion>
+      </div>
       <Contacts />
+
+      <div className="borderMainScreens" />
+      <div className="company">
+        <Text color="white" title="Copyright © 2022. Все права защищены." />
+        <Text color="white" title="Разработано d-e-n.ru" />
+      </div>
     </div>
   );
 };

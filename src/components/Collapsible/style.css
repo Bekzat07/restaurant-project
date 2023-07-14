@@ -1,0 +1,33 @@
+.AccordionItemHeading {
+  display: flex;
+  align-items: center;
+  width: 500px;
+  height: 67px;
+  padding-left: 16px;
+  padding-right: 20px;
+}
+
+.AccordionItemPanel {
+  width: 415px;
+  height: 67px;
+  padding-left: 16px;
+  background-color: #d77233;
+}
+.accordionText {
+  width: 526px;
+}
+.containerArrow {
+  display: flex;
+  width: 526px;
+  flex-direction: row;
+  padding-right: 25px;
+  align-items: center;
+  background-color: #d77233;
+}
+.accorddionButton {
+  display: flex;
+  align-items: center;
+
+  height: 100%;
+  width: 100%;
+}
