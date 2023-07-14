@@ -1,0 +1,105 @@
+.MainScreenContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: #451d04;
+}
+
+.event {
+  display: flex;
+  background-color: #d5621d;
+  width: 420px;
+  height: 502px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.conatinerEvent {
+  display: flex;
+  margin-top: 50px;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+}
+.eventButton {
+  width: 210px;
+  height: 40px;
+  background-color: #d5621d;
+  color: white;
+  border: 0px;
+}
+.eventDisabled {
+  width: 210px;
+  height: 40px;
+  background-color: #451d04;
+  color: white;
+  border: 0px;
+}
+.eventImg {
+  display: flex;
+  width: 160px;
+  height: 200px;
+}
+
+.kitchenText {
+  font-size: 40px;
+  font-weight: 400;
+}
+.kitchenContainer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 1076px;
+  height: 612px;
+}
+.containerFood {
+  display: flex;
+  gap: 10px;
+  width: 486px;
+  height: 111px;
+}
+.foodImaage {
+  width: 110px;
+  height: 110px;
+}
+.foodText {
+  font-size: 18px;
+  font-weight: 700px;
+}
+.priceContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 351px;
+  height: 38px;
+  align-items: center;
+}
+
+.content {
+  font-size: 13.5px;
+  font-weight: 400;
+  width: 351px;
+}
+.borderMainScreens {
+  width: 1296px;
+  margin-top: 50px;
+  border-bottom: 1px solid white;
+}
+.company {
+  display: flex;
+  flex-direction: row;
+  width: 1296px;
+  justify-content: space-between;
+}
+.accordionContainer {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  justify-content: center;
+  gap: 10px;
+}
