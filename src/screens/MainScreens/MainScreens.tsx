@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import "./style.css";
 import { Accordion } from "react-accessible-accordion";
+
+// styles
+import "./style.css";
 
 //firebase
 import { collection, doc, onSnapshot, updateDoc } from "firebase/firestore";
@@ -10,22 +12,22 @@ import { db } from "../../firebase";
 import Contacts from "../../components/Contacts/Contacts";
 import Header from "../../components/Header/Header";
 import Text from "../../components/Text/Text";
-import PriceButton from "../../components/PriceButton/PriceButton";
 import Accordions from "../../components/Collapsible/Collapsible";
+import Button from "../../components/Button/Button";
 
-interface dataForm {
-  id: number;
-  purchase: boolean;
-  img: string;
-  foodImage: string;
-  price: number;
-  weight: number;
-  content: string;
-}
+//dats
+import { dataForm } from "../../data";
+
+// redux
+import { useAppDispatch, useAppSelector } from "../../store";
+import { filterFood, selectCurrentData, setFoot } from "../../store/dataSlice";
+
 const MainScreens = () => {
   const [data, setData] = useState<dataForm[]>([]);
   const [event, setEvent] = useState(true);
+  const food = useAppSelector(selectCurrentData);
 
+  const dispatch = useAppDispatch();
   useEffect(() => {
     onSnapshot(collection(db, "restaurant"), (snapshot) => {
       setData(snapshot.docs.map((e: any) => e.data()));
@@ -33,18 +35,18 @@ const MainScreens = () => {
   }, []);
 
   const updateData = async (e: dataForm) => {
-    console.log("id", `${e.id}`);
     const ref = doc(db, "restaurant", `${e.id}`);
-    console.log(ref);
     await updateDoc(ref, { purchase: !e.purchase });
   };
+
   return (
     <div className="MainScreenContainer">
       <Header />
+
       <div className="conatinerEvent">
         <img
           src={require("../../assets/image/image.png")}
-          style={{ width: 856 }}
+          className="imageResaurant"
         />
         <div>
           <button
@@ -83,9 +85,19 @@ const MainScreens = () => {
               >
                 <div className="priceContainer">
                   <Text title="Amet donec." color="white" styles={"foodText"} />
-                  <PriceButton
-                    title={!e.purchase ? `${e.price}₽` : "отменить заказ"}
-                    onPress={() => updateData(e)}
+                  <Button
+                    title={
+                      !e.purchase
+                        ? `Добавить в заказ ${e.price}₽`
+                        : "отменить заказ"
+                    }
+                    onPress={() => [
+                      updateData(e),
+                      !e.purchase
+                        ? dispatch(setFoot(e))
+                        : dispatch(filterFood(e.id)),
+                    ]}
+                    styles={"foodButton"}
                   />
                 </div>
                 <Text
@@ -99,6 +111,7 @@ const MainScreens = () => {
           );
         })}
       </div>
+
       <div>
         <Accordion allowZeroExpanded={true} className="accordionContainer">
           <Accordions itemButton="Loudspeakers" />
@@ -106,6 +119,7 @@ const MainScreens = () => {
           <Accordions itemButton="fferf" />
         </Accordion>
       </div>
+
       <Contacts />
 
       <div className="borderMainScreens" />

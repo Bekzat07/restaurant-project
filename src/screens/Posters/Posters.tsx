@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
+
+// components
 import Header from "../../components/Header/Header";
+
+// firebase
 import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "../../firebase";
 

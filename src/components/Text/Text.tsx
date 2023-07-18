@@ -3,7 +3,6 @@ import React, { FC } from "react";
 interface TextProps {
   title: string;
   color: string;
-
   styles?: any;
 }
 const Text: FC<TextProps> = ({ title, color, styles }) => {

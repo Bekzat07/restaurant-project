@@ -1,5 +1,9 @@
 import React from "react";
+
+//styles
 import "./style.css";
+
+//components
 import Text from "../Text/Text";
 const Contacts = () => {
   return (

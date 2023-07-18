@@ -1,5 +1,8 @@
 import React, { FC } from "react";
+
+// styles
 import "./style.css";
+
 interface priceButtonProps {
   title: string;
   onPress?: () => void;

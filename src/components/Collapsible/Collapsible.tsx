@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-
 import {
   AccordionItem,
   AccordionItemHeading,
@@ -7,8 +6,10 @@ import {
   AccordionItemPanel,
 } from "react-accessible-accordion";
 
-import { CollapsibleProps } from "react-collapsible";
+// styles
 import "./style.css";
+
+// assets
 import ArrowTop from "../../assets/Icon/ArrowTop";
 interface collabsibeProps {
   itemButton: string;
