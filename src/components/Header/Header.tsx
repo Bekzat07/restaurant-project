@@ -1,7 +1,12 @@
 import React from "react";
-import MainIcon from "../../assets/Icon/MainIcon";
-import "./style.css";
 import { Link } from "react-router-dom";
+
+// assets
+import MainIcon from "../../assets/Icon/MainIcon";
+
+// styles
+import "./style.css";
+
 const Header = () => {
   return (
     <div className="mainHeader">
